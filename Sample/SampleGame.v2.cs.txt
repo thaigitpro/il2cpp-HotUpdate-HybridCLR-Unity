@@ -1,0 +1,68 @@
+using System;
+using UnityEngine;
+
+namespace Sample
+{
+    /// <summary>Vào game: HotPatchKit gọi sau khi cài bản vá (cấu hình "entry": "Sample.GameMain.Start").</summary>
+    public static class GameMain
+    {
+        public static void Start()
+        {
+            var go = new GameObject("SampleGame");
+            UnityEngine.Object.DontDestroyOnLoad(go);
+            go.AddComponent<SampleView>();
+            Debug.Log("[sample] " + Greeter.Message());
+        }
+    }
+
+    public class Greeter
+    {
+        public static string Message()
+        {
+            var c = new Counter();
+            c.Add(20);
+            Func<int, int> inc = x => x + 1; // lambda mới
+            var calls = c.Calls; // biến mới kiểu giá trị: chép ra biến cục bộ rồi mới ghép chuỗi / gọi hàm (xem README mục 7)
+            return "v2 — đã vá: " + Helper.Twice(inc(c.Add(1))) + ", " + c.Describe() + ", lần gọi " + calls;
+        }
+    }
+
+    public class Counter
+    {
+        public int Value;
+        public int Calls; // biến thành viên mới (bản cài không có chỗ trong đối tượng)
+
+        public int Add(int n) // hàm đổi
+        {
+            Calls++;
+            Value += n;
+            return Value;
+        }
+
+        public string Describe() => "Value=" + Value; // hàm mới
+    }
+
+    public static class Helper // lớp mới
+    {
+        public static int Twice(int x) => x * 2;
+    }
+
+    public class SampleView : MonoBehaviour
+    {
+        string _text;
+        float _t0;
+
+        void Start()
+        {
+            _text = Greeter.Message();
+            _t0 = Time.realtimeSinceStartup;
+        }
+
+        void Update()
+        {
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-autoquit") >= 0 && Time.realtimeSinceStartup - _t0 > 2f) Application.Quit();
+        }
+
+        void OnGUI() => GUI.Label(new Rect(20, 20, 600, 40), _text);
+    }
+}

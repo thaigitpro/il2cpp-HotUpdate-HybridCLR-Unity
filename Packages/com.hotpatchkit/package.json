@@ -1,0 +1,8 @@
+{
+  "name": "com.hotpatchkit",
+  "version": "1.0.0",
+  "displayName": "HotPatchKit",
+  "description": "Vá nóng từng hàm cho bản IL2CPP trên nền HybridCLR: mã game dịch sẵn (AOT) trong bản cài, bản vá chỉ chứa phần đổi và chạy thông dịch. Gói ký RSA + mã hoá AES.",
+  "unity": "2021.3",
+  "dependencies": {}
+}

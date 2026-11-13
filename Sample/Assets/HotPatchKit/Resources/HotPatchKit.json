@@ -1,0 +1,21 @@
+{
+    "gameAssembly": "Game",
+    "entry": "Sample.GameMain.Start",
+    "autoBoot": true,
+    "cdnUrl": "http://127.0.0.1:8788",
+    "checkTimeout": 5,
+    "downloadTimeout": 180,
+    "keyDir": "%USERPROFILE%/.hotpatchkit/HotPatchSample",
+    "cdnDir": "HotPatchCDN",
+    "keepBases": 5,
+    "runtimeIdExtraFiles": [
+        "Assets/link.xml"
+    ],
+    "aotMetadata": [
+        "mscorlib",
+        "System",
+        "System.Core",
+        "UnityEngine.CoreModule"
+    ],
+    "hardenNative": false
+}

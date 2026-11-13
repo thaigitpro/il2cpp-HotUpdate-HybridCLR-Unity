@@ -1,0 +1,16 @@
+{
+    "name": "HotPatchKit.Runtime",
+    "rootNamespace": "HotPatchKit",
+    "references": [
+        "HybridCLR.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
